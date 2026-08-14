@@ -34,5 +34,12 @@ const accommodationLinks=[
   {selector:"details.day-row.navy .day-body li:nth-child(3)",name:"Blue Pearl Apartment",label:"Check-in al Blue Pearl Apartment",query:"Skalnica+9+Cres"}
 ];
 accommodationLinks.forEach(({selector,name,label,query})=>{const item=document.querySelector(selector);if(item){item.innerHTML=`<a class="inline-map" href="https://www.google.com/maps/search/?api=1&amp;query=${query}" target="_blank" rel="noreferrer" aria-label="Apri ${name} su Google Maps">${label} ↗</a>`}});
+const drivingRoutes=[
+  {day:1,label:"Rimini agli Apartments Centener",url:"https://www.google.com/maps/dir/?api=1&origin=Rimini,+Italy&destination=Stjepana+Radica+31,+Rovinj,+Croatia&travelmode=driving"},
+  {day:3,label:"Apartments Centener al Mauro & Borna",url:"https://www.google.com/maps/dir/?api=1&origin=Stjepana+Radica+31,+Rovinj,+Croatia&destination=Vatroslava+Lisinskog+8A,+Krk,+Croatia&travelmode=driving"},
+  {day:5,label:"Mauro & Borna al Blue Pearl Apartment",url:"https://www.google.com/maps/dir/?api=1&origin=Vatroslava+Lisinskog+8A,+Krk,+Croatia&destination=Skalnica+9,+Cres,+Croatia&waypoints=Valbiska+Ferry+Port,+Croatia%7CMerag+Ferry+Port,+Croatia&travelmode=driving"},
+  {day:9,label:"Blue Pearl Apartment a Rimini",url:"https://www.google.com/maps/dir/?api=1&origin=Skalnica+9,+Cres,+Croatia&destination=Rimini,+Italy&waypoints=Porozina+Ferry+Port,+Croatia%7CBrestova+Ferry+Port,+Croatia&travelmode=driving"}
+];
+drivingRoutes.forEach(({day,label,url})=>{const link=document.querySelector(`.day-list > details:nth-of-type(${day}) .map-link`);if(link){link.href=url;link.textContent="Apri percorso in auto ↗";link.setAttribute("aria-label",`Apri il percorso in auto da ${label}`)}});
 </script>
 </html>
